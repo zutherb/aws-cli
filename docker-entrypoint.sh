@@ -35,7 +35,7 @@ EOF
 OUTPUT=$(aws $@)
 rm /root/.aws/credentials /root/.aws/config
 
-[[ -n $JQ_PATH ]] && OUTPUT=$(echo $OUTPUT | jq $JQ_PATH)
+[[ -n $JQ_PATH ]] && OUTPUT=$(echo $OUTPUT | jq "$JQ_PATH")
 [[ -n $TRIM_QUOTES ]] && OUTPUT=$(echo $OUTPUT | tr -d '"')
 
 echo $OUTPUT
